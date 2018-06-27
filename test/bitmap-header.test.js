@@ -1,19 +1,22 @@
 const assert = require('assert');
 const constants = require('../lib/bitmap-constants');
 const BitmapHeader = require('../lib/bitmap-header');
+const { readFile } = require('fs').promises;
+const { join } = require('path');
 
 describe('bitmap header', () => {
+
+    const source = join(__dirname, 'test-bitmap.bmp');
+    
 
     let buffer = null;
     beforeEach(() => {
         // TODO: file read './test/test-bitmap.bmp' and put the promise return into buffer variable
+        return readFile(source)
+            .then(b => buffer = b);
     });
 
     it('has correct specs', () => {
-        // TODO: read the wiki spec docs to figure out what these values should be.
-        // You don't need to change this test, you need to put the correct values into
-        // '../lib/bitmap-constants'
-        // 10 pixel offset, 24 bits per pixel offset, 2 file size offset
         assert.ok(constants.PIXEL_OFFSET);
         assert.ok(constants.BITS_PER_PIXEL_OFFSET);
         assert.ok(constants.FILE_SIZE_OFFSET);
