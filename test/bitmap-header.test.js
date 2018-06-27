@@ -13,6 +13,7 @@ describe('bitmap header', () => {
         // TODO: read the wiki spec docs to figure out what these values should be.
         // You don't need to change this test, you need to put the correct values into
         // '../lib/bitmap-constants'
+        // 10 pixel offset, 24 bits per pixel offset, 2 file size offset
         assert.ok(constants.PIXEL_OFFSET);
         assert.ok(constants.BITS_PER_PIXEL_OFFSET);
         assert.ok(constants.FILE_SIZE_OFFSET);

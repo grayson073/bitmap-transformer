@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "npm run test:mocha",
-    "test:mocha": "mocha --reporter=nyan",
+    "test:mocha": "mocha",
     "start": "npm run test:mocha -- -w"
   },
   "repository": {
