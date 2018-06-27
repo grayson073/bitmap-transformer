@@ -1,0 +1,31 @@
+{
+  "name": "bitmap-transformer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run test:mocha",
+    "test:mocha": "mocha --reporter=nyan",
+    "start": "npm run test:mocha -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grayson073/bitmap-transformer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grayson073/bitmap-transformer/issues"
+  },
+  "homepage": "https://github.com/grayson073/bitmap-transformer#readme",
+  "dependencies": {
+    "eslint": "^5.0.1",
+    "mocha": "^5.2.0"
+  }
+}
