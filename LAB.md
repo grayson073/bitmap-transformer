@@ -20,36 +20,39 @@ This will require the use of node `Buffer` in order to manipulate binary data, *
 
 This lab is highly structured and there are tests to guide you:
 
-1. Start with the tests in `bitmap-header.test.js`. This will require you to find
-the location of the needed data using the wikipedia article.
-   1. The first test requires that you have the right constants defined. You will need to figure these
-   out from the wikipedia article
-   2. The second test requires that you create a `BitmapHeader` class that finds the information
-  in the bitmap header and structures it as properties of the `bitmapHeader` instance.
+1. Start with the tests in `bitmap-header.test.js`. This will require you to find the location of the needed data using the wikipedia article.
+    1. The first test requires that you have the right constants defined. You will need to figure these
+    out from the wikipedia article
+    2. The second test requires that you create a `BitmapHeader` class that finds the information in the bitmap header and structures it as properties of the `bitmapHeader` instance.
 2. Create _at least_ three transformation functions, following the tests in `transformers.test.js`.
-  * Invert
-  * Grayscale - see [this article](https://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/) 
-  for different ways to calculate
-  * Another transform
-    * Different grayscale
-    * (red or green or blue) scale the colors (hint: same as grayscale but only multiply one of the colors)
+    * Invert
+    * Grayscale - see [this article](https://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/)for different ways to calculate
+    * Another transform
+        * Different grayscale
+        * (red or green or blue) scale the colors (hint: same as grayscale but only multiply one of the colors)
 
 3. The test in `bitmap-transformer.test.js` requires you to integrate header and transformations using a `BitmapHeader` class. The test is a pinning, or snapshot test, and a pre-converted standard is provided
-for the inverted transformer
+for the inverted transformer. Basic process is to loop through the pixels of the bitmap:
 
-4. When complete, publish your package to npm!
+    1. Start at the offset indicated by `pixelOffset`
+    1. Each loop needs to advance the offset by the number of bytes indicated by `bitsPerPixel`
+    1. For each loop:
+        1. Read the individual color values into a color object
+        1. Pass to the transformation function, which returns a transformed color object
+        1. Write the transformed color values back into the buffer
+    1. Stop looping when you have reached the end of the file, calculated _based on_ `fileSize` 
 
 ### Rubric:
-* Bitmap Header Tests Pass *2pts*
-* Transform Tests Pass *2pts*
-* Bitmap Transformer Tests Pass *3pts*
-* Publish to npm *2pts*
-* Clean Code *1pts*
+
+* Bitmap Header Tests Pass **3pts**
+* Transform Tests Pass **2pts**
+* 3rd Transformer **1pt**
+* Bitmap Transformer Tests Pass **3pts**
+* Clean Project and Code **1pt**
 
 ## Bonus
 
-* Adapt the transformer to work for the non-palleted bitmap image
-* Handle row padding
+* Adapt the transformer to work for the palletted bitmap image (colors are contained in color table - transform those)
 
 ## Super Bonus
 
