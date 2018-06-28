@@ -1,7 +1,10 @@
+const fs = require('fs');
 const assert = require('assert');
 const { readFile } = require('fs').promises;
 const BitmapTransformer = require('../lib/bitmap-transformer');
 const { invert } = require('../lib/invert-transformer');
+const { grayscale } = require('../lib/grayscale-transformer');
+const { blueify } = require('../lib/blueify-transformer');
 const { join } = require('path');
 
 describe('bitmap file transformer', () => {
@@ -15,7 +18,7 @@ describe('bitmap file transformer', () => {
     });
 
     // "pinning" test, or "snapshot" test
-    it('test whole transform', () => {
+    it('test INVERT transform', () => {
         // Use the BitmapTransformer class, 
         // passing in the buffer from the file read
         const bitmap = new BitmapTransformer(buffer);
@@ -37,6 +40,30 @@ describe('bitmap file transformer', () => {
         // you can write it out by commenting above code block, and uncomment code below 
         // that writes the file and then visually inspect the file for correctness.
 
-        // return fs.writeFileSync('./test/inverted-expected.bmp', bitmap.buffer);
+        // return fs.writeFileSync('./test/blueify-expected.bmp', bitmap.buffer);
+    });
+
+    it('test GRAYSCALE transform', () => {
+        const bitmap = new BitmapTransformer(buffer);
+
+        bitmap.transform(grayscale);
+
+        return readFile('./test/grayscale-expected.bmp')
+            .then(expected => {
+                assert.deepEqual(bitmap.buffer, expected);
+            });
+
+    });
+
+    it('test BLUEIFY transform', () => {
+        const bitmap = new BitmapTransformer(buffer);
+
+        bitmap.transform(blueify);
+
+        return readFile('./test/blueify-expected.bmp')
+            .then(expected => {
+                assert.deepEqual(bitmap.buffer, expected);
+            });
+
     });
 });
