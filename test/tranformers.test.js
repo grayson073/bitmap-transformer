@@ -1,6 +1,7 @@
 const assert = require('assert');
 const { invert } = require('../lib/invert-transformer');
 const { grayscale } = require('../lib/grayscale-transformer');
+const { blueify } = require('../lib/blueify-transformer');
 
 describe('transformers', () => {
 
@@ -32,6 +33,20 @@ describe('transformers', () => {
             r: 113,
             g: 113,
             b: 113
+        });
+    });
+
+    it('blueify', () => {
+        const transformed = blueify({
+            r: 34,
+            g: 100,
+            b: 205
+        });
+
+        assert.deepEqual(transformed, {
+            r: 113,
+            g: 113,
+            b: 169
         });
     });
 
