@@ -3,8 +3,6 @@ const assert = require('assert');
 const { readFile } = require('fs').promises;
 const PaletteTransformer = require('../lib/palette-transformer');
 const { invert } = require('../lib/invert-transformer');
-const { grayscale } = require('../lib/grayscale-transformer');
-const { blueify } = require('../lib/blueify-transformer');
 const { join } = require('path');
 
 describe('palette file transformer', () => {
@@ -17,7 +15,6 @@ describe('palette file transformer', () => {
             .then(b => buffer = b);
     });
 
-    // "pinning" test, or "snapshot" test
     it('test INVERT transform', () => {
         const bitmap = new PaletteTransformer(buffer);
 
