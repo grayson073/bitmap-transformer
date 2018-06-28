@@ -1,4 +1,3 @@
-const fs = require('fs');
 const assert = require('assert');
 const { readFile } = require('fs').promises;
 const BitmapTransformer = require('../lib/bitmap-transformer');
