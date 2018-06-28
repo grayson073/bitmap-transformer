@@ -1,13 +1,17 @@
 const assert = require('assert');
 const { readFile } = require('fs').promises;
 const BitmapTransformer = require('../lib/bitmap-transformer');
-const invert = require('../lib/invert-transformer');
+const { invert } = require('../lib/invert-transformer');
+const { join } = require('path');
 
 describe('bitmap file transformer', () => {
+
+    const source = join(__dirname, 'test-bitmap.bmp');
     
     let buffer = null;
     beforeEach(() => {
-        // TODO: file read './test/test-bitmap.bmp' and put the promise return into buffer variable
+        return readFile(source)
+            .then(b => buffer = b);
     });
 
     // "pinning" test, or "snapshot" test
