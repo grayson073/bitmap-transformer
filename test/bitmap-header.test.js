@@ -11,7 +11,6 @@ describe('bitmap header', () => {
 
     let buffer = null;
     beforeEach(() => {
-        // TODO: file read './test/test-bitmap.bmp' and put the promise return into buffer variable
         return readFile(source)
             .then(b => buffer = b);
     });
@@ -23,9 +22,6 @@ describe('bitmap header', () => {
     });
 
     it('parses header data', () => {
-        // TODO: use the constants to populate the following properties
-        // on the BitmapHeader in its constructor.
-        // These test values are correct for the supplied test-bitmap.bmp
         const header = new BitmapHeader(buffer);
         assert.equal(header.pixelOffset, 54);
         assert.equal(header.bitsPerPixel, 24);
