@@ -16,8 +16,10 @@ describe.only('streaming bitmap transformer', () => {
     });
     
     it('transforms an image', () => {
-        const streamingTransformer = new StreamingBitmapTransformer(source);
-        return streamingTransformer.transform(invert, invertedBitmap)
+        return StreamingBitmapTransformer.create(source)
+            .then(streamingTransformer => {
+                return streamingTransformer.transform(invert, invertedBitmap);
+            })
             .then(() => {
                 const actual = readFile(invertedBitmap);
                 const expected = readFile('./test/inverted-expected.bmp');
