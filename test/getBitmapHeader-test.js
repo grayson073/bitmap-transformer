@@ -11,8 +11,10 @@ describe.only('Bitmap header getter', () => {
 
     it('gets header data', () => {
         return getBitmapHeader(source)
-            .then(buffer => {
-                assert.equal(buffer.readInt32LE(0), 54);
+            .then(header => {
+                assert.equal(header.pixelOffset, 54);
+                assert.equal(header.bitsPerPixel, 24);
+                assert.equal(header.fileSize, 30054);
             });
     });
 
