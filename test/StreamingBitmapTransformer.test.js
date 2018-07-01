@@ -16,7 +16,7 @@ describe.only('streaming bitmap transformer', () => {
     });
     
     it('transforms an image', () => {
-        return StreamingBitmapTransformer.create(source)
+        StreamingBitmapTransformer.create(source)
             .then(streamingTransformer => {
                 return streamingTransformer.transform(invert, invertedBitmap);
             })
