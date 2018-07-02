@@ -21,6 +21,7 @@ describe.only('streaming bitmap transformer', () => {
                 return streamingTransformer.transform(invert, invertedBitmap);
             })
             .then(() => {
+                //TODO: Find out why actual = Promise{ <pending> }
                 const actual = readFile(invertedBitmap);
                 const expected = readFile('./test/inverted-expected.bmp');
                 assert.deepEqual(actual, expected);
