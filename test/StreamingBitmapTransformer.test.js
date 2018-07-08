@@ -8,7 +8,7 @@ const assert = require('assert');
 describe.only('streaming bitmap transformer', () => {
     const source = join(__dirname, 'test-bitmap.bmp');
     const invertedBitmap = './test/stream-invert.bmp';
-    let streamer = null;
+
     beforeEach(() => {
         return unlink(invertedBitmap)
             .catch(err => {
@@ -21,8 +21,6 @@ describe.only('streaming bitmap transformer', () => {
     });
     
     it('transforms an image', () => {
-        let actual = null;
-        let expected = null;
         return StreamingBitmapTransformer.create(source)
             .then(streamingTransformer => {
                 return streamingTransformer.transform(invert, invertedBitmap)
@@ -34,10 +32,6 @@ describe.only('streaming bitmap transformer', () => {
                     .catch(err => {
                         throw err
                     });
-        });
-        
-        
-        
-        
+            });
     });
 });
