@@ -30,7 +30,7 @@ describe.only('streaming bitmap transformer', () => {
                         assert.deepEqual(actual, expected);
                     })
                     .catch(err => {
-                        throw err
+                        throw err;
                     });
             });
     });
