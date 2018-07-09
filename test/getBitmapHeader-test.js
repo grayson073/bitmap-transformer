@@ -4,7 +4,7 @@ const { join } = require('path');
 
 
 
-describe.only('Bitmap header getter', () => {
+describe('Bitmap header getter', () => {
 
     const source = join(__dirname, 'test-bitmap.bmp');
 

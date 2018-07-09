@@ -5,7 +5,7 @@ const fs = require('fs');
 const { invert } = require('../lib/invert-transformer');
 const assert = require('assert');
 
-describe.only('streaming bitmap transformer', () => {
+describe('streaming bitmap transformer', () => {
     const source = join(__dirname, 'test-bitmap.bmp');
     const invertedBitmap = './test/stream-invert.bmp';
 
