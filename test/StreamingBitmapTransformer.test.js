@@ -23,7 +23,7 @@ describe('streaming bitmap transformer', () => {
     it('transforms an image', () => {
         return StreamingBitmapTransformer.create(source)
             .then(streamingTransformer => {
-                return streamingTransformer.transform(invert, invertedBitmap)
+                return streamingTransformer.transform([invert, invert, invert], invertedBitmap)
                     .then(() => {
                         const actual = fs.readFileSync(invertedBitmap);
                         const expected = fs.readFileSync('./test/inverted-expected.bmp');
